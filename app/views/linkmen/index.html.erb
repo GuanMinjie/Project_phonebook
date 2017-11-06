@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>我的联系人</h1>
+<br></br>
+<table>
+  <thead>
+    <tr>
+      <th><b>姓名</b></th>
+      <th><b>电话</b></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @linkmen.each do |linkman| %>
+      <tr>
+        <td><%= linkman.name %></td>
+        <td><%= linkman.number %></td>
+        <td><%= link_to '显示', linkman %></td>
+        <td><%= link_to '编辑', edit_linkman_path(linkman) %></td>
+        <td><%= link_to '删除', linkman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '添加联系人', new_linkman_path %>
+<%= link_to '退出账号', sign_out_path,method: 'delete' %>

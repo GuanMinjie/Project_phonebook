@@ -1,0 +1,27 @@
+<%= form_with(model: linkman, local: true) do |form| %>
+  <% if linkman.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(linkman.errors.count, "error") %> prohibited this linkman from being saved:</h2>
+
+      <ul>
+      <% linkman.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :linkman_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number, id: :linkman_number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
