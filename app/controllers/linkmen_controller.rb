@@ -1,5 +1,7 @@
 class LinkmenController < ApplicationController
   before_action :set_linkman, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate,only: [:index]
+
 
   # GET /linkmen
   # GET /linkmen.json
