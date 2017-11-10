@@ -11,7 +11,8 @@ module SessionsHelper
     @current_user =nil
   end
   def current_user
-    @current_user = @current_user||User.where(:id=>session[:usesr_id]).first
+    @current_user = (User.where(:id=>session[:user_id]).first).name
+   # @current_user.name
   end
 
 end

@@ -1,27 +1,29 @@
-<%= form_with(model: linkman, local: true) do |form| %>
-  <% if linkman.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(linkman.errors.count, "error") %> prohibited this linkman from being saved:</h2>
-
-      <ul>
-      <% linkman.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container">
+  <%= form_with(model: linkman, local: true) do |form| %>
+      <% if linkman.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(linkman.errors.count, "error") %> prohibited this linkman from being saved:</h2>
+            <ul>
+              <% linkman.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <div class="form-new-linkman">
+        <form>
+          <div class="form-group">
+            <%= form.label :name %><br>
+            <%= form.text_field :name, id: :linkman_name %>
+          </div>
+          <div class="form-group">
+            <%= form.label :number %><br>
+            <%= form.telephone_field :number, id: :linkman_number %>
+          </div>
+          <div class="actions">
+            <button class="btn btn-default" type="submit">确定</button>
+          </div>
+        </form>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :linkman_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number, id: :linkman_number %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit:'新建联系人' %>
-  </div>
-<% end %>
+</div>

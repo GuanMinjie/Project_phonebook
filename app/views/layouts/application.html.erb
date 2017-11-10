@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Phonebook</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+        p.welcome {text-align: center; font-size:40px;}
+
+    </style>
   </head>
 
   <body>
+  <% if logged_in?%>
+     <p class="welcome"><b> 欢迎<%= current_user %>使用,我的电话本！</b></p>
+      <ul class="nav nav-tabs">
+         <li role="presentation" ><%= link_to '我的联系人', '/linkmen#index' %></li>
+         <li role="presentation"><%= link_to '添加联系人', new_linkman_path %></li>
+         <li role="presentation"><a href="#">Messages</a></li>
+         <li role="presentation"> <%= link_to '退出账号', sign_out_path,method: 'delete' %></li>
+      </ul>
+  <% end %>
     <%= yield %>
   </body>
 </html>

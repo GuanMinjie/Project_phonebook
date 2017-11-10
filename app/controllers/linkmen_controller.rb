@@ -32,7 +32,7 @@ class LinkmenController < ApplicationController
      @linkman.user_id = session[:user_id]
     respond_to do |format|
       if @linkman.save
-        format.html { redirect_to @linkman, notice: 'Linkman was successfully created.' }
+        format.html { redirect_to '/linkmen#index', notice: 'Linkman was successfully created.' }
         format.json { render :show, status: :created, location: @linkman }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class LinkmenController < ApplicationController
   def update
     respond_to do |format|
       if @linkman.update(linkman_params)
-        format.html { redirect_to @linkman, notice: 'Linkman was successfully updated.' }
+        format.html { redirect_to '/linkmen#index', notice: 'Linkman was successfully updated.' }
         format.json { render :show, status: :ok, location: @linkman }
       else
         format.html { render :edit }
