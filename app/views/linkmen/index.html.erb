@@ -1,31 +1,45 @@
 <div class="container">
   <div class="errors-messages">
-     <p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
   </div>
-<br></br>
-<table class="table">
-  <thead>
-    <tr>
-      <th><b>姓名</b></th>
-      <th><b>电话</b></th>
-    </tr>
-  </thead>
+  <br></br>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="search-field" align="right">
+        <%= search_field :linkman,:info %>
+        <%=submit_tag '搜索'%>
 
-  <tbody>
-    <% @linkmen.each do |linkman| %>
-      <tr>
-        <td><%= linkman.name %></td>
-        <td><%= linkman.number %></td>
-       
-        <td><%= link_to '编辑', edit_linkman_path(linkman) %></td>
-        <td><%= link_to '删除', linkman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6">
+      <table class="table">
+        <thead>
+        <tr>
+          <th><b>姓名</b></th>
+          <th><b>电话</b></th>
+          <th><b>邮箱</b></th>
+          <th><b>备注</b></th>
+        </tr>
+        </thead>
 
-<br>
+        <tbody>
+        <% @linkmen.each do |linkman| %>
+            <tr>
+              <td><%= linkman.name %></td>
+              <td><%= linkman.number %></td>
+              <td><%= linkman.email %></td>
+              <td><%= linkman.comment %></td>
+              <td><%= link_to '发送邮件', send_email_path ,method: :post%></td>
+              <td><%= link_to '编辑', edit_linkman_path(linkman) %></td>
+              <td><%= link_to '删除', linkman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <br>
 
 
-
+  </div>
 </div>

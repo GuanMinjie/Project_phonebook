@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get :sign_up, to:'users#new'
   post :sign_up, to: 'users#create'
   delete :sign_out, to: 'sessions#destroy'
+  post :send_email, to:'linkmen#send_email'
  root 'sessions#new'
 end

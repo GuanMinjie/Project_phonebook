@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
          session[:user_id] =@user.id
-
+         NotifierMailer.welcome_email(@user).deliver_later
         format.html { redirect_to '/linkmen#index', notice: 'User was successfully created.' }
         #puts @user.password
         format.json { redirect_to '/linkmen#index', status: :created, location: @user }
@@ -74,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password,:password_confirmation)
+      params.require(:user).permit(:name, :password,:password_confirmation, :email)
     end
 end
